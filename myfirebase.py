@@ -32,12 +32,12 @@ class MyFirebase():
             with open("refreshtoken.txt", "w") as arquivo:
                 arquivo.write(refresh_token)
 
-            link_prox_id = f'https://aplicativosvendasaulahash-default-rtdb.firebaseio.com/prox_id_vendedor.json?auth={self.id_token}'
+            link_prox_id = f'https://aplicativosvendasaulahash-default-rtdb.firebaseio.com/prox_id_vendedor.json?auth={id_token}'
             req_id_vendedor = requests.get(link_prox_id)
             req_id_vendedor_dic = req_id_vendedor.json()
             id_vendedor = req_id_vendedor_dic['prox_id_vendedor']
 
-            link = f'https://aplicativosvendasaulahash-default-rtdb.firebaseio.com/{local_id}.json?auth={self.id_token}'
+            link = f'https://aplicativosvendasaulahash-default-rtdb.firebaseio.com/{local_id}.json?auth={id_token}'
             info = f'{{"avatar": "foto1.png","equipe": "", "total_vendas": "0", "vendas": "","id_vendedor": "{id_vendedor}"}}'
             requisicao = requests.patch(link, data=info)
 
