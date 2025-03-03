@@ -1,0 +1,119 @@
+<AdicionarVendasPage>:
+
+    FloatLayout:
+        canvas: 
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg1.png'
+
+        # botao cancelar
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == "normal" else 'icones/botao_apertado.png'
+            text: 'Cancelar'
+            pos_hint: {'right': 0.45, 'top': 0.2}
+            size_hint: 0.4, 0.2
+            on_release: app.mudar_tela(home_page)
+
+# botao aplicar
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == "normal" else 'icones/botao_apertado.png'
+            text: 'Adicionar Venda'
+            pos_hint: {'right': 0.95, 'top': 0.2}
+            size_hint: 0.4, 0.2
+            on_release: app.adicionar_venda()
+
+# selecionar cliente
+        Label:
+            pos_hint: {'right': 1, 'top': 1}
+            size_hint: 1, 0.05
+            text: 'Selecione o Cliente'
+            id: id_selecione_cliente
+
+        ScrollView:
+            pos_hint: {'right': 1, 'top': 0.95}
+            size_hint: 1, 0.15
+            GridLayout
+                rows: 1
+                id: lista_clientes
+# Formatacao padrao para scroll vertical ( horizontal é inverter y por x, height por weight e row por collumn )
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+
+#selecionar produto
+        Label:
+            pos_hint: {'right': 1, 'top': 0.75}
+            size_hint: 1, 0.05
+            text: 'Selecione o Produto'
+            id: id_selecione_produto
+
+        ScrollView:
+            pos_hint: {'right': 1, 'top': 0.7}
+            size_hint: 1, 0.15
+            GridLayout
+                rows: 1
+                id: lista_produtos
+# Formatacao padrao para scroll vertical ( horizontal é inverter y por x, height por weight e row por collumn )
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+
+        Label:
+            pos_hint: {'right': 1, 'top': 0.5}
+            size_hint: 1, 0.05
+            text: 'Data: 01/01/2001'
+            bold: True
+            id: id_data
+
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.45}
+            size_hint: 0.8, 0.1
+            LabelButton:
+                text: 'Kg'
+                id: id_kg
+                on_release: app.selecionar_unidade('id_kg')
+
+            LabelButton:
+                text: 'Unidades'
+                id: id_unidades
+                on_release: app.selecionar_unidade('id_unidades')
+
+            LabelButton:
+                text: 'Litros'
+                id: id_litros
+                on_release: app.selecionar_unidade('id_litros')
+
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.355}
+            size_hint: 0.8, 0.075
+            Label:
+                text: "Preço Total (R$)"
+                id: id_label_preco
+            TextInput:
+                id : id_preco_total
+                hint_text: "Digite apenas números"
+                
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.275}
+            size_hint: 0.8, 0.075
+            Label:
+                text: "Quantidade Total: "
+                id: id_label_quantidade
+            TextInput:
+                id : id_quantidade
+                hint_text: "0"
+                

@@ -1,0 +1,62 @@
+<HomePage>:
+# imagem de fundo da home page
+    FloatLayout:
+        canvas: 
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg1.png'
+
+# label total de vendas estilizado
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {'right': 0.85, 'top': 1}
+            size_hint: 0.7, 0.2
+            id: label_total_vendas
+            text: 'Seu total de vendas: R$ 1'
+            markup: True
+
+# scrow da tela central da home page
+        ScrollView:
+            pos_hint: {'right': 0.97, 'top': 0.8}
+            size_hint: 0.94, 0.63
+            GridLayout:
+                cols: 1
+                id: lista_vendas
+                spacing: 2, 2
+# Formatacao padrao para scroll vertical ( horizontal é inverter y por x, height por weight e row por collumn )
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "100dp"
+                row_force_default: True
+
+# 3 botões da home page
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 1, 'top': 0.12}
+            size_hint: 1, 0.12
+            canvas: 
+                Color: 
+                    rgb: utils.get_color_from_hex('#006D7E')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+# botao ir para adicionar_vendas_page
+            ImageButton:
+                source: 'icones/add.png'
+                on_release: app.mudar_tela('adicionar_vendas_page')
+
+# botao ir para listar_vendedores_page
+            ImageButton:
+                source: 'icones/salesman.png'
+                on_release: app.mudar_tela('listar_vendedores_page')
+
+# botao ir para ajustes_page
+            ImageButton:
+                source: 'icones/settings.png'
+                on_release: app.mudar_tela('ajustes_page')
+                

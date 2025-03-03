@@ -1,0 +1,74 @@
+<ajustespage>:
+
+# imagem de fundo da home page
+    FloatLayout:
+        canvas: 
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg1.png'
+
+# label do id estilizado
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {'right': 0.85, 'top': 1}
+            size_hint: 0.7, 0.2
+            id: id_vendedor
+            text: 'Seu ID Único: 1'
+            bold: True
+
+# botao ir para foto_perfil_page
+        ImageButton:
+            pos_hint: {'right': 0.5, 'top': 0.75}
+            size_hint: 0.5, 0.15
+            source: 'icones/foto_perfil.png'
+            on_release: app.mudar_tela('foto_perfil_page')
+        LabelButton:
+            pos_hint: {'right': 0.9, 'top': 0.75}
+            size_hint: 0.5, 0.15
+            text: 'Mudar Foto de Perfil'
+            on_release: app.mudar_tela('foto_perfil_page')
+
+# botao ir para acompanhar_vendedor_page
+        ImageButton:
+            pos_hint: {'right': 0.5, 'top': 0.55}
+            size_hint: 0.5, 0.15
+            source: 'icones/adicionar_vendedor.png'
+            on_release: app.mudar_tela('acompanhar_vendedor_page')
+        LabelButton:
+            pos_hint: {'right': 0.9, 'top': 0.55}
+            size_hint: 0.5, 0.15
+            text: 'Acompanhar Vendedor'
+            on_release: app.mudar_tela('acompanhar_vendedor_page')
+
+# botao ir para todas_vendas_page
+        ImageButton:
+            pos_hint: {'right': 0.5, 'top': 0.35}
+            size_hint: 0.5, 0.15
+            source: 'icones/vendas_empresa.png'
+            on_release: app.carregar_todas_vendas()
+        LabelButton:
+            pos_hint: {'right': 0.9, 'top': 0.35}
+            size_hint: 0.5, 0.15
+            text: 'Ver todas as vendas'
+            on_release: app.carregar_todas_vendas()
+
+# botao voltar
+        FloatLayout:
+            pos_hint: {'right': 1, 'top': 0.12}
+            size_hint: 1, 0.12
+            canvas: 
+                Color: 
+                    rgb: utils.get_color_from_hex('#006D7E')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                pos_hint: {'right': 0.2, 'top': 0.9}
+                size_hint: 0.2, 0.8
+                source: 'icones/voltar.png'
+                on_release: app.mudar_tela('home_page')

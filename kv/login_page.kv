@@ -1,0 +1,66 @@
+<LoginPage>:
+
+# imagem de fundo da home page
+    FloatLayout:
+        canvas: 
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg1.png'
+
+# label de titulo
+        Label:
+            pos_hint: {'right': 0.85, 'top': 0.90}
+            size_hint: 0.7, 0.1
+            text: 'CONTROLE DE [color=#00CFDB]VENDAS HASHTAG[/color]'
+            bold: True
+            markup: True
+
+# caixa de texto email
+        TextInput:
+            id: email_input
+            hint_text: "E-mail"
+            pos_hint: {'right': 0.9, 'top': 0.7}
+            size_hint: 0.8, 0.1
+
+# caixa de texto senha
+        TextInput:
+            id: senha_input
+            password: True
+            hint_text: "Senha"
+            pos_hint: {'right': 0.9, 'top': 0.55}
+            size_hint: 0.8, 0.1
+
+# label de botão
+        Label:
+            id: mensagem_login
+            text: '[color=#00CFDB]Faça seu login[/color]'
+            bold: True
+            markup: True
+            pos_hint: {'right': 0.9, 'top': 0.4}
+            size_hint: 0.8, 0.1
+
+# botao criar conta
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == "normal" else 'icones/botao_apertado.png'
+            text: 'Crie sua conta'
+            pos_hint: {'right': 0.45, 'top': 0.3}
+            size_hint: 0.4, 0.2
+            on_release: app.firebase.criar_conta(email_input.text, senha_input.text)
+# label fazer login
+    # botao fazer login
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == "normal" else 'icones/botao_apertado.png'
+            text: 'Faça seu login'
+            pos_hint: {'right': 0.95, 'top': 0.3}
+            size_hint: 0.4, 0.2
+            on_release: app.firebase.fazer_login(email_input.text, senha_input.text)
+

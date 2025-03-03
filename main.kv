@@ -1,0 +1,58 @@
+#:include kv/home_page.kv
+#:include kv/ajustes_page.kv
+#:include kv/adicionar_vendas_page.kv
+#:include kv/listar_vendedores_page.kv
+#:include kv/foto_perfil_page.kv
+#:include kv/acompanhar_vendedor_page.kv
+#:include kv/todas_vendas_page.kv
+#:include kv/vendas_outro_vendedor_page.kv
+#:include kv/login_page.kv
+
+#:import utils kivy.utils
+
+# image do icone de todas as pags
+FloatLayout:
+    canvas: 
+        Color: 
+            rgb: utils.get_color_from_hex('#001824')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Image:
+        pos_hint: {'right': 1, 'top': 0.92 }
+        size_hint: 1, 0.17
+        source: 'icones/hash.png'
+        id: foto_perfil
+    ScreenManager:
+        pos_hint: {'right': 1, 'top': 0.70}
+        size_hint: 1, 0.70 
+        id: screen_manager
+        LoginPage:
+            name: 'login_page'
+            id: login_page
+        HomePage:
+            name: 'home_page'
+            id: home_page
+        AjustesPage:
+            name: 'ajustes_page'
+            id: ajustes_page
+        AdicionarVendasPage:
+            name: 'adicionar_vendas_page'
+            id: adicionar_vendas_page
+        ListarVendedoresPage:
+            name: 'listar_vendedores_page'
+            id: listar_vendedores_page
+        FotoPerfilPage:
+            name: 'foto_perfil_page'
+            id: foto_perfil_page
+        AcompanharVendedorPage:
+            name: 'acompanhar_vendedor_page'
+            id: acompanhar_vendedor_page
+        TodasVendasPage:
+            name: 'todas_vendas_page'
+            id: todas_vendas_page
+        VendasOutroVendedorPage:
+            name: 'vendas_outro_vendedor_page'
+            id: vendas_outro_vendedor_page
+        
+
