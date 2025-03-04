@@ -59,7 +59,7 @@ class MainApp(App):
         pagina_adicionar_vendas = self.root.ids['adicionar_vendas_page']
         data = pagina_adicionar_vendas.ids['id_data']
 
-        data.text = f'Data: {date.today().strftime('%d/%m/%Y')}'
+        data.text = f'Data: {date.today().strftime("%d/%m/%Y")}'
 
         self.carregar_infos_usuario()
 
