@@ -1,4 +1,3 @@
-from turtle import onrelease
 from kivy.app import App
 from kivy.lang import Builder
 from banner_venda import BannerVenda
